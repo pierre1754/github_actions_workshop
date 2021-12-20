@@ -1,29 +1,36 @@
 name: Run tests
 
 on:
-  completion:
-    success:
-    - Check_compilation
+  workflow_run:
+    workflows: ["Check compilation"]
+    types:
+      - completed
 
 jobs:
-  build:
+  unit-tests:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     runs-on: ubuntu-20.04
 
     container: epitechcontent/epitest-docker:devel
 
     steps:
-      - name: unit-tests
+      - name: Checkout code
         uses: actions/checkout@v2
+
       - name: make tests command
         run: make tests_run
 
-  build:
-    runs-on: ubuntu-20.04
+      - name: make coverage
+        run: make coverage
 
-    container: epitechcontent/epitest-docker:devel
+  # build:
+  #   runs-on: ubuntu-20.04
 
-    steps:
-      - name: functional-tests
-        uses: actions/checkout@v2
-      - name: make tests command
-        run: make tests_run
+  #   container: epitechcontent/epitest-docker:devel
+
+  #   steps:
+  #     - name: functional-tests
+  #       uses: actions/checkout@v2
+  #     - name: make tests command
+  #       run: make tests_run
