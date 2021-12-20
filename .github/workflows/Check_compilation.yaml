@@ -9,7 +9,11 @@ jobs:
     container: epitechcontent/epitest-docker:devel
 
     steps:
-      - name: Check compilation
+      - name: Checkout code
         uses: actions/checkout@v2
-      - name: make command
+
+      - name: Make command
         run: make
+
+      - name: Check binary
+      run: ls my_hello

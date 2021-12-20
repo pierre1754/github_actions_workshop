@@ -9,7 +9,19 @@ jobs:
     container: epitechcontent/epitest-docker:devel
 
     steps:
-      - name: Run tests
+      - name: unit-tests
+        uses: actions/checkout@v2
+      - name: make tests command
+        run: make tests_run
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    container: epitechcontent/epitest-docker:devel
+
+    steps:
+      - name: functional-tests
         uses: actions/checkout@v2
       - name: make tests command
         run: make tests_run
