@@ -16,4 +16,4 @@ jobs:
           repository: ronanboiteau/NormEZ
 
       - name: NormEZ exec
-        run: ./NormEZ/NormEZ.rb
+        run: ls && ./NormEZ/NormEZ.rb
