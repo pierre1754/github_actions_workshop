@@ -1,0 +1,13 @@
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    container: epitechcontent/epitest-docker:devel
+
+    steps:
+      - name: Run tests
+        uses: actions/checkout@v2
+      - name: make test command
+        run: make test_run
