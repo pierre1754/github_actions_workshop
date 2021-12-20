@@ -1,4 +1,4 @@
-name: Check compilation
+name: Check coding style
 
 on: [push]
 
