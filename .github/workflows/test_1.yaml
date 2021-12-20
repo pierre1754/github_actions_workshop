@@ -1,10 +1,4 @@
-name: Build master
-
 on: [push]
-
-strategy:
-  matrix:
-    compiler: [gcc]
 
 jobs:
   build:
