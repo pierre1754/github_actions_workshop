@@ -1,0 +1,22 @@
+name: Check compilation
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Clone supercharge docs repository
+        uses: actions/checkout@v2
+        with:
+          repository: ronanboiteau/NormEZ
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Make command
+        run: make
+
+      - name: Check binary
+        run: ls my_hello
