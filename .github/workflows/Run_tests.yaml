@@ -1,6 +1,9 @@
 name: Run tests
 
-on: [push]
+on:
+  completion:
+    success:
+    - Check_compilation
 
 jobs:
   build:
@@ -14,7 +17,6 @@ jobs:
       - name: make tests command
         run: make tests_run
 
-jobs:
   build:
     runs-on: ubuntu-20.04
 
